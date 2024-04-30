@@ -1,3 +1,25 @@
 {
-  "livros": []
+  "livros": [
+    {
+      "id": 1,
+      "titulo": "Livro teste 1",
+      "autor": "Autor 1",
+      "editora": "Editora 1",
+      "preco": 29.99
+    },
+    {
+      "id": 2,
+      "titulo": "Livro teste 2",
+      "autor": "Autor 2",
+      "editora": "Editora 2",
+      "preco": 29.99
+    },
+    {
+      "id": 3,
+      "titulo": "Livro teste 3",
+      "autor": "Autor 3",
+      "editora": "Editora 3",
+      "preco": 29.99
+    }
+  ]
 }
