@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookService } from '../../book.service';
 import { Book } from './../../book';
 import { Component, OnInit } from '@angular/core';
@@ -9,13 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './books.component.css',
 })
 export class BooksComponent implements OnInit {
+  [x: string]: any;
   listaLivros: Book[] = [];
   livroFormGroup: FormGroup;
+  valid = false;
 
   constructor(private service: BookService, private formBuilder: FormBuilder) {
     this.livroFormGroup = formBuilder.group({
       id: [''],
-      titulo: [''],
+      titulo: ['', [Validators.required]],
       autor: [''],
       editora: [''],
       preco: [''],
@@ -39,12 +41,20 @@ export class BooksComponent implements OnInit {
   }
 
   save() {
-    this.service.addBook(this.livroFormGroup.value).subscribe({
-      next: (data) => {
-        this.listaLivros.push(data);
-      },
-    });
+    this.valid = true;
+    if (this.livroFormGroup.valid) {
+      this.service.addBook(this.livroFormGroup.value).subscribe({
+        next: (data) => {
+          this.listaLivros.push(data);
+          this.valid = false;
+        },
+      });
+    }
 
     this.livroFormGroup.reset();
+  }
+
+  get titulo() {
+    return this.livroFormGroup.get('titulo');
   }
 }

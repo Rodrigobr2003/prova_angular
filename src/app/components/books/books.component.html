@@ -11,6 +11,11 @@
             id="titulo"
             formControlName="titulo"
           />
+          <small
+            *ngIf="valid && titulo.hasError('required')"
+            class="text-danger bg-danger-subtle p-1 rounded-2"
+            >Título do livro é requerido</small
+          >
         </div>
 
         <div class="mb-3">
