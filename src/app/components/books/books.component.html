@@ -1,1 +1,57 @@
-<p>books works!</p>
+<div class="container bg-light p-4 mt-5 rounded-4">
+  <div class="row">
+    <div class="col-7 m-auto">
+      <h2 class="text-center">Cadastro de livros:</h2>
+      <form>
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Título</label>
+          <input type="text" class="form-control mb-2" id="titulo" />
+        </div>
+
+        <div class="mb-3">
+          <label for="autor" class="form-label">Autor</label>
+          <input type="text" class="form-control mb-2" id="autor" />
+        </div>
+
+        <div class="mb-3">
+          <label for="editora" class="form-label">Editora</label>
+          <input type="text" class="form-control mb-2" id="editora" />
+        </div>
+
+        <div class="mb-3">
+          <label for="preco" class="form-label">Preco</label>
+          <input type="text" class="form-control mb-2" id="preco" />
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Salvar</button>
+      </form>
+
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Título</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Editora</th>
+              <th scope="col">Preco</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let livro of listaLivros">
+              <td># {{ livro.id }}</td>
+              <td>{{ livro.titulo }}</td>
+              <td>{{ livro.autor }}</td>
+              <td>{{ livro.editora }}</td>
+              <td>{{ livro.preco }}</td>
+              <td>
+                <button class="btn btn-warning ms-3">Alterar</button>
+                <button class="btn btn-danger ms-3">Remover</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
