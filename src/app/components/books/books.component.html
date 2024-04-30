@@ -46,7 +46,9 @@
               <td>{{ livro.preco }}</td>
               <td>
                 <button class="btn btn-warning ms-3">Alterar</button>
-                <button class="btn btn-danger ms-3">Remover</button>
+                <button class="btn btn-danger ms-3" (click)="remover(livro)">
+                  Remover
+                </button>
               </td>
             </tr>
           </tbody>

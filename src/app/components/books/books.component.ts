@@ -21,4 +21,10 @@ export class BooksComponent implements OnInit {
       next: (data) => (this.listaLivros = data),
     });
   }
+
+  remover(livro: Book) {
+    this.service.removeBook(livro).subscribe({
+      next: () => this.carregaLivros(),
+    });
+  }
 }
