@@ -2,27 +2,49 @@
   <div class="row">
     <div class="col-7 m-auto">
       <h2 class="text-center">Cadastro de livros:</h2>
-      <form>
+      <form [formGroup]="livroFormGroup">
         <div class="mb-3">
           <label for="titulo" class="form-label">Título</label>
-          <input type="text" class="form-control mb-2" id="titulo" />
+          <input
+            type="text"
+            class="form-control mb-2"
+            id="titulo"
+            formControlName="titulo"
+          />
         </div>
 
         <div class="mb-3">
           <label for="autor" class="form-label">Autor</label>
-          <input type="text" class="form-control mb-2" id="autor" />
+          <input
+            type="text"
+            class="form-control mb-2"
+            id="autor"
+            formControlName="autor"
+          />
         </div>
 
         <div class="mb-3">
           <label for="editora" class="form-label">Editora</label>
-          <input type="text" class="form-control mb-2" id="editora" />
+          <input
+            type="text"
+            class="form-control mb-2"
+            id="editora"
+            formControlName="editora"
+          />
         </div>
 
         <div class="mb-3">
           <label for="preco" class="form-label">Preco</label>
-          <input type="text" class="form-control mb-2" id="preco" />
+          <input
+            type="text"
+            class="form-control mb-2"
+            id="preco"
+            formControlName="preco"
+          />
         </div>
-        <button type="submit" class="btn btn-primary mb-3">Salvar</button>
+        <button (click)="save()" type="submit" class="btn btn-primary mb-3">
+          Salvar
+        </button>
       </form>
 
       <div>

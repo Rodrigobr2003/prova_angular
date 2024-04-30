@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BookService } from '../../book.service';
 import { Book } from './../../book';
 import { Component, OnInit } from '@angular/core';
@@ -9,8 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksComponent implements OnInit {
   listaLivros: Book[] = [];
+  livroFormGroup: FormGroup;
 
-  constructor(private service: BookService) {}
+  constructor(private service: BookService, private formBuilder: FormBuilder) {
+    this.livroFormGroup = formBuilder.group({
+      id: [''],
+      titulo: [''],
+      autor: [''],
+      editora: [''],
+      preco: [''],
+    });
+  }
 
   ngOnInit(): void {
     this.carregaLivros();
@@ -26,5 +36,15 @@ export class BooksComponent implements OnInit {
     this.service.removeBook(livro).subscribe({
       next: () => this.carregaLivros(),
     });
+  }
+
+  save() {
+    this.service.addBook(this.livroFormGroup.value).subscribe({
+      next: (data) => {
+        this.listaLivros.push(data);
+      },
+    });
+
+    this.livroFormGroup.reset();
   }
 }
